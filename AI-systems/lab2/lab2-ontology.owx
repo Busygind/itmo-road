@@ -1,0 +1,686 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/dmitryb/ontologies/2023/8/ai-systems"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/dmitryb/ontologies/2023/8/ai-systems">
+    <Prefix name="" IRI="http://www.semanticweb.org/dmitryb/ontologies/2023/8/ai-systems/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Biome"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Creature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Transport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Weapon"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#can_be_killed_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#can_be_reached_with"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#can_kill"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#can_reach"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_inhabitant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#lives_in"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_area"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_damage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_hp"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_max_distance"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_population"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_remoteness"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#big_reef"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#bladderfish"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#crab_costume"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#crabsnake"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#crashsite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#cyclops"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#flippers"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#gasopod"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#glider"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hand"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#jelly_shroom_caves"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#kelp_forest"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#knife"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#laser"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#leviathan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#moth"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#oculus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#peeper"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#propulsion_gun"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#reefback"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shores"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#stalker"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#underwater_islands"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Creature"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#lives_in"/>
+            <Class IRI="#Biome"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Creature"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#has_hp"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Biome"/>
+        <Class IRI="#Creature"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Biome"/>
+        <Class IRI="#Transport"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Biome"/>
+        <Class IRI="#Weapon"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Creature"/>
+        <Class IRI="#Transport"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Creature"/>
+        <Class IRI="#Weapon"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Transport"/>
+        <Class IRI="#Weapon"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Biome"/>
+        <NamedIndividual IRI="#big_reef"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#bladderfish"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Transport"/>
+        <NamedIndividual IRI="#crab_costume"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#crabsnake"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Biome"/>
+        <NamedIndividual IRI="#crashsite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Transport"/>
+        <NamedIndividual IRI="#cyclops"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Transport"/>
+        <NamedIndividual IRI="#flippers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#gasopod"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Transport"/>
+        <NamedIndividual IRI="#glider"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Weapon"/>
+        <NamedIndividual IRI="#hand"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Biome"/>
+        <NamedIndividual IRI="#jelly_shroom_caves"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Biome"/>
+        <NamedIndividual IRI="#kelp_forest"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Weapon"/>
+        <NamedIndividual IRI="#knife"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Weapon"/>
+        <NamedIndividual IRI="#laser"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#leviathan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Transport"/>
+        <NamedIndividual IRI="#moth"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#oculus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#peeper"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Weapon"/>
+        <NamedIndividual IRI="#propulsion_gun"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#reefback"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Biome"/>
+        <NamedIndividual IRI="#shores"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Creature"/>
+        <NamedIndividual IRI="#stalker"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Biome"/>
+        <NamedIndividual IRI="#underwater_islands"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#bladderfish"/>
+        <NamedIndividual IRI="#kelp_forest"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#crabsnake"/>
+        <NamedIndividual IRI="#jelly_shroom_caves"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#gasopod"/>
+        <NamedIndividual IRI="#crashsite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#leviathan"/>
+        <NamedIndividual IRI="#shores"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#oculus"/>
+        <NamedIndividual IRI="#jelly_shroom_caves"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#peeper"/>
+        <NamedIndividual IRI="#crashsite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#reefback"/>
+        <NamedIndividual IRI="#big_reef"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#stalker"/>
+        <NamedIndividual IRI="#crashsite"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_area"/>
+        <NamedIndividual IRI="#big_reef"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">700.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_remoteness"/>
+        <NamedIndividual IRI="#big_reef"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1500</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#bladderfish"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#bladderfish"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">120</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_max_distance"/>
+        <NamedIndividual IRI="#crab_costume"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3600</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#crabsnake"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">160</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#crabsnake"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_area"/>
+        <NamedIndividual IRI="#crashsite"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">500.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_remoteness"/>
+        <NamedIndividual IRI="#crashsite"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_max_distance"/>
+        <NamedIndividual IRI="#cyclops"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">12400</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_max_distance"/>
+        <NamedIndividual IRI="#flippers"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">600</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#gasopod"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">140</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#gasopod"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">50</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_max_distance"/>
+        <NamedIndividual IRI="#glider"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2200</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_damage"/>
+        <NamedIndividual IRI="#hand"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">40</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_area"/>
+        <NamedIndividual IRI="#jelly_shroom_caves"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">140.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_remoteness"/>
+        <NamedIndividual IRI="#jelly_shroom_caves"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">550</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_area"/>
+        <NamedIndividual IRI="#kelp_forest"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">300.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_remoteness"/>
+        <NamedIndividual IRI="#kelp_forest"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">50</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_damage"/>
+        <NamedIndividual IRI="#knife"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">120</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_damage"/>
+        <NamedIndividual IRI="#laser"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">300</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#leviathan"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">290</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#leviathan"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_max_distance"/>
+        <NamedIndividual IRI="#moth"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5600</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#oculus"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">40</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#oculus"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">70</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#peeper"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#peeper"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">100</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_damage"/>
+        <NamedIndividual IRI="#propulsion_gun"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">230</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#reefback"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1300</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#reefback"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_area"/>
+        <NamedIndividual IRI="#shores"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">650.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_remoteness"/>
+        <NamedIndividual IRI="#shores"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2500</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_hp"/>
+        <NamedIndividual IRI="#stalker"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">110</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_population"/>
+        <NamedIndividual IRI="#stalker"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">40</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_area"/>
+        <NamedIndividual IRI="#underwater_islands"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">540.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_remoteness"/>
+        <NamedIndividual IRI="#underwater_islands"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5700</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#can_be_killed_by"/>
+        <ObjectProperty IRI="#can_kill"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#can_be_reached_with"/>
+        <ObjectProperty IRI="#can_reach"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#has_inhabitant"/>
+        <ObjectProperty IRI="#lives_in"/>
+    </InverseObjectProperties>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#can_be_killed_by"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#can_kill"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#can_reach"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#has_inhabitant"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#lives_in"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#can_be_killed_by"/>
+        <Class IRI="#Creature"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#can_reach"/>
+        <Class IRI="#Transport"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#lives_in"/>
+        <Class IRI="#Creature"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#can_be_killed_by"/>
+        <Class IRI="#Weapon"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#can_reach"/>
+        <Class IRI="#Biome"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#lives_in"/>
+        <Class IRI="#Biome"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_area"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_damage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_hp"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_max_distance"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_population"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_remoteness"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_area"/>
+        <Class IRI="#Biome"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_damage"/>
+        <Class IRI="#Weapon"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_hp"/>
+        <Class IRI="#Creature"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_max_distance"/>
+        <Class IRI="#Transport"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_population"/>
+        <Class IRI="#Creature"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_remoteness"/>
+        <Class IRI="#Biome"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_area"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_damage"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_hp"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_max_distance"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_population"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_remoteness"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>can_be_killed_by</Literal>
+        </Annotation>
+        <Body>
+            <DataPropertyAtom>
+                <DataProperty IRI="#has_hp"/>
+                <Variable IRI="/creature"/>
+                <Variable IRI="/hp"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#has_damage"/>
+                <Variable IRI="/weapon"/>
+                <Variable IRI="/damage"/>
+            </DataPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#lessThan">
+                <Variable IRI="/hp"/>
+                <Variable IRI="/damage"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#can_be_killed_by"/>
+                <Variable IRI="/creature"/>
+                <Variable IRI="/weapon"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>can_reach</Literal>
+        </Annotation>
+        <Body>
+            <DataPropertyAtom>
+                <DataProperty IRI="#has_max_distance"/>
+                <Variable IRI="/transport"/>
+                <Variable IRI="/dis"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#has_remoteness"/>
+                <Variable IRI="/biome"/>
+                <Variable IRI="/rem"/>
+            </DataPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#lessThanOrEqual">
+                <Variable IRI="/rem"/>
+                <Variable IRI="/dis"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#can_reach"/>
+                <Variable IRI="/transport"/>
+                <Variable IRI="/biome"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+
