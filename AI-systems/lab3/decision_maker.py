@@ -11,14 +11,14 @@ def query(msg: str) -> bool:
 def validate_weapons(weapons: list):
     for weapon in weapons:
         if not query(f"weapon({weapon})"):
-            print("There is no weapon named ", weapon)
+            print("There is no weapon named", weapon)
             exit()
 
 
 def validate_transport(transport_list: list):
     for transport in transport_list:
         if not query(f"transport({transport})"):
-            print("There is no transport named ", transport)
+            print("There is no transport named", transport)
             exit()
 
 
@@ -65,9 +65,11 @@ def get_all_creatures() -> list:
 
 print("Input weapons you have (use space as separator): ", end="")
 weapons = input().split(" ")
+validate_weapons(weapons)
 
 print("Input transport you have (use space as separator): ", end="")
 transport = input().split(" ")
+validate_transport(transport)
 
 biomes = get_available_biomes(transport)
 print("You can reach the following biomes:", ', '.join(biomes))
