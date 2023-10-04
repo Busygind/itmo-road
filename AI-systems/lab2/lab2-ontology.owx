@@ -40,6 +40,9 @@
         <ObjectProperty IRI="#has_inhabitant"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#has_neighbour"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#lives_in"/>
     </Declaration>
     <Declaration>
@@ -512,6 +515,9 @@
         <ObjectProperty IRI="#has_inhabitant"/>
     </IrreflexiveObjectProperty>
     <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#has_neighbour"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
         <ObjectProperty IRI="#lives_in"/>
     </IrreflexiveObjectProperty>
     <ObjectPropertyDomain>
@@ -521,6 +527,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#can_reach"/>
         <Class IRI="#Transport"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has_neighbour"/>
+        <Class IRI="#Creature"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#lives_in"/>
@@ -533,6 +543,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#can_reach"/>
         <Class IRI="#Biome"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has_neighbour"/>
+        <Class IRI="#Creature"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#lives_in"/>
@@ -604,6 +618,51 @@
         <DataProperty IRI="#has_remoteness"/>
         <Datatype abbreviatedIRI="xsd:integer"/>
     </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>has_neighbour</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Creature"/>
+                <Variable IRI="/creature1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Creature"/>
+                <Variable IRI="/creature2"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#lives_in"/>
+                <Variable IRI="/creature1"/>
+                <Variable IRI="/biome"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#lives_in"/>
+                <Variable IRI="/creature2"/>
+                <Variable IRI="/biome"/>
+            </ObjectPropertyAtom>
+            <DifferentIndividualsAtom>
+                <Variable IRI="/creature1"/>
+                <Variable IRI="/creature2"/>
+            </DifferentIndividualsAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#has_neighbour"/>
+                <Variable IRI="/creature1"/>
+                <Variable IRI="/creature2"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
     <DLSafeRule>
         <Annotation>
             <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
