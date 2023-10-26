@@ -1,0 +1,106 @@
+<project name="web_lab_3" xmlns:ivy="antlib:org.apache.ivy.ant" default="build">
+    <property file="build.properties"/>
+
+    <target name="resolve">
+        <ivy:retrieve/>
+    </target>
+
+    <path id="build-path">
+        <fileset dir="${lib}" includes="*.jar"/>
+    </path>
+
+    <path id="test-path">
+        <path refid="build-path"/>
+        <pathelement location="${binary-classes}"/>
+    </path>
+
+    <target name="compile">
+        <echo>============== COMPILE STARTED ==============</echo>
+        <mkdir dir="${binary-classes}"/>
+        <javac destdir="${binary-classes}" srcdir="${main}" includeantruntime="false">
+            <classpath refid="build-path"/>
+        </javac>
+
+        <echo>============== COMPILE TEST CLASSES ==============</echo>
+        <mkdir dir="${binary-tests}"/>
+        <javac destdir="${binary-tests}" srcdir="${test}" includeantruntime="false">
+            <classpath refid="test-path"/>
+        </javac>
+        <echo>============== SUCCESSFULLY COMPILED ==============</echo>
+    </target>
+
+    <target name="build" depends="compile">
+        <echo>============== BUILD STARTED ==============</echo>
+        <mkdir dir="${out}"/>
+        <war destfile="${out}/${ant.project.name}.war" webxml="${web}">
+            <classes dir="${binary-classes}"/>
+            <lib dir="${lib}"/>
+            <fileset dir="${main}/webapp"/>
+            <manifest>
+                <attribute name="Created-By" value="Web" />
+                <attribute name="Manifest-Version" value="1.0" />
+                <attribute name="Main-Class" value="NoClass" />
+            </manifest>
+        </war>
+        <echo>============== SUCCESSFULLY BUILT ==============</echo>
+    </target>
+
+    <target name="clean">
+        <echo>============== CLEAN STARTED ==============</echo>
+        <delete dir="${build}"/>
+        <delete dir="${out}"/>
+        <delete dir="${alt_src}"/>
+        <echo>============== SUCCESSFULLY CLEANED ==============</echo>
+    </target>
+
+    <target name="test" depends="build">
+        <echo>============== TEST STARTED ==============</echo>
+        <junit printsummary="yes" haltonerror="yes">
+            <classpath>
+                <pathelement path="${binary-classes}"/>
+                <path refid="test-path"/>
+                <pathelement location="${binary-tests}"/>
+            </classpath>
+            <test name="${test_name}"/>
+            <formatter type="plain" usefile="false"/>
+        </junit>
+        <echo>============== SUCCESSFULLY TESTED ==============</echo>
+    </target>
+
+    <target name="native2ascii">
+        <echo>============== CONVERT STARTED ==============</echo>
+        <native2ascii includes="${localization}" dest="." ext="ascii.properties" encoding="UTF-8"/>
+        <echo>============== SUCCESSFULLY CONVERTED ==============</echo>
+    </target>
+
+    <target name="alt" depends="build" description="создаёт альтернативную версию программы с измененными именами
+    переменных и классов (используя задание replace/replaceregexp в файлах параметров) и упаковывает её в jar-архив">
+        <echo>============== CREATING ALT VERSION STARTED ==============</echo>
+        <mkdir dir="${alt_src}/src"/>
+        <copy todir="${alt_src}/src">
+            <fileset dir="${src}"/>
+        </copy>
+        <delete dir="${alt_src}/src/tests"/>
+        <mkdir dir="${alt_src}/artifacts"/>
+        <move file="${alt_src}/${path-to-packages}/beans/Service.java" tofile="${alt_src}/${path-to-packages}/beans/AltService.java"/>
+        <move file="${alt_src}/${path-to-packages}/beans/HitBean.java" tofile="${alt_src}/${path-to-packages}/beans/AltHitBean.java"/>
+        <move file="${alt_src}/${path-to-packages}/entities/Hit.java" tofile="${alt_src}/${path-to-packages}/entities/AltHit.java"/>
+        <move file="${alt_src}/${path-to-packages}/beans/SessionsHitsContainer.java" tofile="${alt_src}/${path-to-packages}/beans/SessionsAltHitsContainer.java"/>
+        <move file="${alt_src}/${path-to-packages}/utilities/HitValidator.java" tofile="${alt_src}/${path-to-packages}/utilities/AltHitValidator.java"/>
+        <replace token="Service" value="AltService">
+            <fileset dir="${alt_src}/src" includes="**/*.java"/>
+        </replace>
+        <replace token="Hit" value="AltHit">
+            <fileset dir="${alt_src}/src" includes="**/*.java"/>
+        </replace>
+        <antcall target="build">
+            <param name="src" value="${alt_src}/${src}"/>
+            <param name="out" value="${alt_src}/${out}"/>
+            <param name="main" value="${alt_src}/${main}"/>
+            <param name="binary-classes" value="${alt_src}/${binary-classes}"/>
+            <param name="binary-tests" value="${alt_src}/${binary-tests}"/>
+            <param name="test" value="${alt_src}/${test}"/>
+        </antcall>
+        <echo>============== ALT VERSION SUCCESSFULLY CREATED ==============</echo>
+    </target>
+</project>

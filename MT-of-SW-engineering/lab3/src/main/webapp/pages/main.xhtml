@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--suppress CheckTagEmptyBody -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<!--      xmlns:ace="http://www.icefaces.org/icefaces/components"-->
+
+    <h:head>
+        <script type="text/javascript" charset="UTF-8"
+                src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+        <link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="../styles/main.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css"/>
+        <script type="text/javascript" src="../js/GraphController.js"></script>
+        <script type="text/javascript" src="../js/Validator.js"></script>
+        <script type="text/javascript" src="../js/TimeHandler.js"></script>
+        <script type="text/javascript" src="../js/Main.js"></script>
+    </h:head>
+    <h:body>
+
+        <div id="container" class="container">
+            <div id="graph-and-input" class="values">
+
+                <h:panelGrid class="graph">
+                    <h2>Given area:</h2>
+                    <div id="jxgbox" class="jxgbox"></div>
+                </h:panelGrid>
+                <h:panelGrid class="right-box">
+                    <h:form method="post" class="user-input">
+                        <h:panelGrid id="x-values" styleClass="values">
+                            <label>Enter X value:</label>
+                            <p:inputText id="x-value" decimalPlaces="1" value="#{hitBean.x}" modifyValueOnWheel="true"
+                                           maxValue="4" minValue="-4" decimalSeparator="." styleClass="x-value">
+                                <f:validateDoubleRange minimum="-4" maximum="4"/>
+                            </p:inputText>
+                            <p:slider id="x-value-spinner" for="x-value" minValue="-4" maxValue="4" step="0.1"
+                                      range="false" styleClass="x-value-spinner" />
+                            <label>Enter Y value:</label>
+                            <h:inputText id="y-value" required="true" requiredMessage="Y is undefined!"
+                                         type="text" maxlength="14" name="y-value"
+                                         value="#{hitBean.y}" styleClass="y-value">
+                                <f:validateDoubleRange minimum="-5" maximum="3"/>
+                            </h:inputText>
+
+                            <label>Enter R value:</label>
+                            <p:spinner id="r-value" class="var-value" min="1" max="3" value="#{hitBean.r}"
+                                       required="true" requiredMessage="R is undefined!" stepFactor="0.5"
+                                       decimalSeparator="."
+                                       onchange="clearPoints(); drawPointsByR($('.ui-spinner-input').val())"/>
+                        </h:panelGrid>
+                        <div class="buttons">
+                            <p:commandButton id="reset" styleClass="form-button" title="RESET">
+
+                            </p:commandButton>
+                            <p:commandButton id="submit" type="submit" styleClass="form-button submit-button" title="SUBMIT"
+                                             action="#{hitBean.processRequest()}" >
+                                <f:ajax execute="x-value y-value r-value" render="table script"/>
+                            </p:commandButton>
+                        </div>
+                    </h:form>
+
+<!--                        <h:inputHidden id="timezone" value="${hitBean.timezone}"/>-->
+                </h:panelGrid>
+
+            </div>
+            <div id="table-box" class="table">
+
+                <h:dataTable styleClass="result_table" value="#{hitsContainer.curSessionDots}" var="hit" id="table">
+                    <h:column>
+                        <f:facet name="header">X</f:facet>
+                        <h:outputText value="#{hit.x}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Y</f:facet>
+                        <h:outputText value="#{hit.y}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">R</f:facet>
+                        <h:outputText value="#{hit.r}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Result</f:facet>
+                        <h:outputText value="#{hit.success}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Local time</f:facet>
+                        <h:outputText value="#{hit.timestamp}">
+                            <f:convertDateTime pattern="dd-MM-yyyy HH.mm.ss" type="both" />
+                        </h:outputText>
+                    </h:column>
+                </h:dataTable>
+
+            </div>
+            <div id="right-bar">
+                <h:link outcome="goToIndex">
+                    <h:commandButton id="home" styleClass="home-button" image="../resources/images/home.png"/>
+                </h:link>
+                <h:commandButton type="submit" id="clean-table-button" image="../resources/images/bin.png"
+                                 styleClass="clean-table-button" action="#{hitsContainer.removeUserHits()}">
+                    <f:ajax render="table script"/>
+                </h:commandButton>
+            </div>
+            <h:panelGroup id="script">
+                <h:outputScript>
+                    function updatePoints() {
+                        clearPoints();
+                        if (globalBoard !== undefined) {
+                            serverPoints = [
+                            <ui:repeat value="#{hitsContainer.curSessionDots}" var="hit">
+                                {x: #{hit.x}, y: #{hit.y}, r: #{hit.r}, success: #{hit.success}},
+                            </ui:repeat>
+                            ];
+                            drawPointsByR($('.ui-spinner-input').val());
+                        }
+                    }
+                    updatePoints();
+                    console.log("*************")
+                </h:outputScript>
+            </h:panelGroup>
+
+        </div>
+        <div id="footer">
+            <h:graphicImage value="../resources/images/logo_footer.png" height="80px"/>
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <!--suppress CheckTagEmptyBody -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../styles/welcome.css" />
+</h:head>
+<h:body>
+
+    <h:panelGrid id="welcome-page">
+
+        <h1>Laboratory work #3</h1>
+        <h2>Author: Busygin Dmitry, P32111</h2>
+        <h2>Variant: 113232</h2>
+        <h:link outcome="goToMain">
+            <h:commandButton id="start" styleClass="start-button" image="../resources/images/arrow.png"/>
+        </h:link>
+        <div class="time-wrapper">
+<!--            <h:form>-->
+                <h:outputText value="#{now}" styleClass="date">
+                    <f:convertDateTime pattern="dd-MM-yyyy" type="date" />
+                </h:outputText>
+                <p:clock displayMode="analog"/>
+<!--            </h:form>-->
+        </div>
+    </h:panelGrid>
+    <div id="footer">
+        <h:graphicImage value="../resources/images/logo_footer.png" height="80px"/>
+    </div>
+</h:body>
+</html>
