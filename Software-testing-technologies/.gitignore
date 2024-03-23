@@ -1,0 +1,7 @@
+.idea
+build
+
+/lab1/build
+/lab1/build/*
+/lab1/.idea
+/lab1/.gradle
